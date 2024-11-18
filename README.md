@@ -9,6 +9,9 @@ Continuous speech separation (CSS) is an approach to handling overlapped speech 
 ## Requirements
 
 We use SCTK (https://github.com/usnistgov/SCTK), the NIST Scoring Toolkit, for evaluation and PyKaldi2 (https://github.com/jzlianglu/pykaldi2), a Python internface to Kaldi for ASR. They can be installed as follows. Note that you need to have Docker enabled on your machine as it is required by PyKaldi2. 
+
+**CUDA version 11 is requred**
+
 ```
 ./install.sh
 source ./path.sh
@@ -19,8 +22,13 @@ We also use some Python packages. Assuming you are using conda, the simplest way
 ```
 conda env create -f conda_env.yml
 conda activate libricss_release
+conda install -c conda-forge tqdm 
 ```
 The second command activates the newly created environment named libricss_release. 
+
+```
+sudo pip install tqdm==4.45.0
+```
 
 
 ## Getting Started

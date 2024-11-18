@@ -1,4 +1,4 @@
-name: libricss_release
+name: LibriCSS
 channels:
   - conda-forge
   - defaults
