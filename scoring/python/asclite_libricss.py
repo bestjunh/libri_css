@@ -34,7 +34,7 @@ def run_asclite(orig_stmfile, orig_ctmfile, orig_glmfile, sctkpath, noverlaps):
 
     # Work in a temp directory. 
     with tempfile.TemporaryDirectory(dir='.') as tmpdir:
-        print(f'Tempoerary directory created: {tmpdir}')
+        # print(f'Tempoerary directory created: {tmpdir}')
 
         # Copy the stm and ctm files to the temp directory. 
         stmfile = os.path.join(tmpdir, 'orig.stm')

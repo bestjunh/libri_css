@@ -30,7 +30,7 @@ graphdir=$amdir/tri6b/graph_tgsmall
 alidir=$amdir/tri6b
 
 echo "running lattice generation ..."
-latgen-faster-mapped-parallel --num-threads=12 --min-active=200 --max-active=7000 --max-mem=50000000 --beam=15 --lattice-beam=8 --acoustic-scale=0.1 --allow-partial=true --word-symbol-table=$graphdir/words.txt $alidir/final.mdl $graphdir/HCLG.fst "ark:$srcdir/loglikes.ark" ark:$srcdir/lat.ark > $srcdir/decode.1.log 2>&1
+latgen-faster-mapped-parallel --num-threads=84 --min-active=200 --max-active=7000 --max-mem=50000000 --beam=15 --lattice-beam=8 --acoustic-scale=0.1 --allow-partial=true --word-symbol-table=$graphdir/words.txt $alidir/final.mdl $graphdir/HCLG.fst "ark:$srcdir/loglikes.ark" ark:$srcdir/lat.ark > $srcdir/decode.1.log 2>&1
 
 wait
 

@@ -21,7 +21,9 @@ The second command defines some environmental variables, where path.sh is genera
 We also use some Python packages. Assuming you are using conda, the simplest way to install all required dependencies is to create a conda environment as follows. 
 ```
 conda env create -f conda_env.yml
-conda activate libricss_release
+```
+```
+conda activate LibriCSS
 conda install -c conda-forge tqdm 
 ```
 The second command activates the newly created environment named libricss_release. 
@@ -36,6 +38,8 @@ sudo pip install tqdm==4.45.0
 
 ### Continuous input evaluation
 To perform continuous input evaluation, you may follow the steps below. 
+**Please check there are no "separation_baseline/", if there is delete it!**
+**`/home`에서 docker열면 다른 경로에서 decoding이 가능하다.**
 1. First, the data can be downloaded and preprocessed as follows. 
     ```
     ./dataprep/scripts/dataprep.sh
@@ -43,9 +47,15 @@ To perform continuous input evaluation, you may follow the steps below.
 2. Then, ASR can be run by taking the following steps. 
     ```
     ./asr/scripts/gen_asrinput_raw_continuous.sh  # performing VAD
+    ```
+    ```
     sh activate.sh  # activating PyKaldi2 Docker environment
+    ```
+    ```
     source path.sh
     source asr/scripts/asr_path.sh
+    ```
+    ```
     cd exp/data/baseline/segments/decoding_cmd
     . decode.sh  # running ASR (If you want to specify the GPU to use, add "export CUDA_VISIBLE_DEVICES=N" at the top of decode.sh, where N is an integer corresponding to the GPU index.)
     ```
@@ -79,25 +89,48 @@ To perform continuous input evaluation, you may follow the steps below.
 ### Utterance-wise evaluation
 
 Assuming that you have already downloaded the AM and PyKaldi2 as described above, ASR can be performed as follows. 
-```
+**Please check there are no "separation_baseline/", if there is delete it!**
+then run
+
+```bash
 ./asr/scripts/gen_asrinput_raw_utterance.sh  # performing VAD
+```
+다른 경로에서 decoding을 원하면, 상위 경로로 가서 실행
+```
 sh activate.sh  # activating PyKaldi2 Docker environment
+```
+```bash
+sudo sh /home/albert2/libri_css/activate.sh 
+```
+```bash
+ cd albert2/libri_css/ 
+```
+```
 source path.sh
 source asr/scripts/asr_path.sh
-
-cd exp/data/separation_baseline/utterance/decoding_cmd  
+```
+```
+cd exp/data/baseline/utterance/decoding_cmd  
+```
+```bash
+cd /home/nas3/user/albert/DB/LibriCSS/exp/data/baseline/utterance/decoding_cmd/
+```
+```
 . decode.sh  # running ASR (If you want to specify the GPU to use, add "export CUDA_VISIBLE_DEVICES=N" at the top of decode.sh, where N is an integer corresponding to the GPU index.)
+```
+```
 exit  # quitting the Docker environment
 ```
 
 After this step, the WERs of the utterance-wise evaluation are displayed as:
+(Albert Results on Larynx)
 ```
-0S         : 11.5
-0L         : 11.3
-OV10       : 18.3
-OV20       : 26.4
-OV30       : 34.6
-OV40       : 43.2
+0S         : 11.5 (11.6)
+0L         : 11.3 (11.1)
+OV10       : 18.3 (18.6)
+OV20       : 26.4 (26.9)
+OV30       : 34.6 (35.1)
+OV40       : 43.2 (43.1)
 ```
 
 You might want to change the permission of the intermediate files before you exit the Docker environment, as by default the files generated within the Docker environment are owned by root. 
