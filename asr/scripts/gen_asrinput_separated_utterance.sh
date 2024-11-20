@@ -13,7 +13,7 @@ curdir=`realpath $curdir`
 
 prep_script=$curdir/../python/gen_asrinput_raw_utterance.py
 script_path=$curdir/../scripts
-libricss_path=/home/dev60-data2-mount/albert/LibriCSS_output/copy_input
+libricss_path=/home/dev60-data2-mount/albert/LibriCSS_output/v1.2
 decode_path=$libricss_path/utterances_decode
 data_path=$libricss_path/utterances
 

@@ -193,12 +193,21 @@ To perform continuous input evaluation, you may follow the steps below.
     Under each exp/data/separation_result/utterance_separation/overlap_ratio_*, you will find utterance\_\*\__{0,1}.wav. For example, utterance\_0\_{0,1}.wav are the two-channel signals obtained by applying the utterance-wise separation algorithm to the original 7-channel utterance\_0.wav. 
 
 2. Then, the ASR and WER calculation can be performed with the following steps. 
+    한번에 decoding하게 수정
     ```
-    ./asr/scripts/gen_asrinput_separated_utterance.sh  # performing VAD
     sh activate.sh  # activating PyKaldi2 Docker environment
+    ```
+    ```
     source path.sh
     source asr/scripts/asr_path.sh
+    ```
     
+    ```
+    ./asr/scripts/gen_asrinput_separated_utterance.sh  # performing VAD
+    ```
+    
+    한번에 돌면 아래는 필요없음
+    ```
     cd exp/data/separation_baseline/utterance/decoding_cmd
     . decode.sh  # running ASR (If you want to specify the GPU to use, add "export CUDA_VISIBLE_DEVICES=N" at the top of decode.sh, where N is an integer corresponding to the GPU index.)
     exit  # quitting the Docker environment
