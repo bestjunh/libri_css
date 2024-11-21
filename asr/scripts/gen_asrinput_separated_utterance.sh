@@ -13,11 +13,11 @@ curdir=`realpath $curdir`
 
 prep_script=$curdir/../python/gen_asrinput_raw_utterance.py
 script_path=$curdir/../scripts
-libricss_path=/home/dev60-data2-mount/albert/LibriCSS_output/v1.2
-decode_path=$libricss_path/utterances_decode
+libricss_path=/home/data/albert/LibriCSS_output/v2.1/Iter2
 data_path=$libricss_path/utterances
+decode_path=$libricss_path/utterances_decode
 
-cp $EXPROOT/utterance_transcription.txt $data_path
+cp $EXPROOT/utterance_transcription.txt $data_path #Please check the file exit and copied.
 
 $PYTHON $prep_script --input_path $data_path --tool_path $script_path --decode_path $decode_path --experiment_setup separated
 

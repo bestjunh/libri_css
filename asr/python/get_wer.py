@@ -111,7 +111,8 @@ def pick_setup(all_cond_res,session_id,setup='separated'):
 					err,ref=get_this_meet_res_raw(this_cond[item],item)
 				E+=np.sum(err)
 				R+=np.sum(ref)
-		cond_res.append(E/R)
+		cond_res.append(E/(R+1.0e-10))
+  		# cond_res.append(E/R)
 	cond_idx=np.argmin(cond_res)
 	return all_cond[cond_idx]
 
@@ -133,7 +134,7 @@ def get_all_res(all_cond_res,tgt_cond,kwd,setup='separated'):
 					err,ref=get_this_meet_res_raw(this_cond[item],item)
 				E+=np.sum(err)
 				R+=np.sum(ref)
-		res.append(E/R)
+		res.append(E/(R+1.0e-10))
 	return res
 
 
