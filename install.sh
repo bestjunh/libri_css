@@ -85,7 +85,10 @@ then
     fi
     
     cd $PYKALDIPATH
-    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1Xon9jS2vEDOcwYAMrN2XAMrL-7PE2qXj' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1Xon9jS2vEDOcwYAMrN2XAMrL-7PE2qXj" -O libri_AM.zip && rm -rf /tmp/cookies.txt
+    #wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1Xon9jS2vEDOcwYAMrN2XAMrL-7PE2qXj' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1Xon9jS2vEDOcwYAMrN2XAMrL-7PE2qXj" -O libri_AM.zip && rm -rf /tmp/cookies.txt
+    echo Copy from IIP...
+    cp /home/nas3/user/albert/DB/LibriCSS/libri_AM.zip ./
+
     unzip libri_AM.zip
     cd $CWD  
 fi
