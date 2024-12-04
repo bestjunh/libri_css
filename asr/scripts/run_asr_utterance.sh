@@ -23,8 +23,8 @@ python $pykaldi2/decode.py -config $pykaldi2/example/OpenCSS/configs/decode_960.
 -batch_size 20   \
 -model_path $amdir/model.mmi.tar \
 -prior_path $amdir/tri6b/final.occs  \
--out_file $srcdir/loglikes.ark
-
+-out_file $srcdir/loglikes.ark \
+-gpuid "1"
 
 graphdir=$amdir/tri6b/graph_tgsmall
 alidir=$amdir/tri6b
